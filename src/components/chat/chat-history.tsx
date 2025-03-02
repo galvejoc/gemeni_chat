@@ -1,15 +1,7 @@
+import { ChatHistoryProps } from '@/interface'
 import ReactMarkdown from 'react-markdown'
 
-interface Message {
-  type: "user" | "bot"; // Solo puede ser "user" o "bot"
-  message: string;
-}
-
-interface ChatHistoryProps {
-  chatHistory: Message[]; // Es un array de objetos tipo Message
-}
-
-export default function ChatHistory({ chatHistory }: ChatHistoryProps) {
+export function ChatHistory({ chatHistory }: ChatHistoryProps) {
   return (
     <>
       {chatHistory.map((message, index) => (
