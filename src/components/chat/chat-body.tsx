@@ -7,6 +7,7 @@ import { Loading } from "../loading";
 import { ChatSession, GoogleGenerativeAI } from "@google/generative-ai";
 import { ChatMessage } from "@/interface";
 import { ChatEmpy } from "./chat-empy";
+import { GoIssueReopened } from "react-icons/go";
 
 export function ChatBody() {
   const [userInput, setUserInput] = useState('');
@@ -96,7 +97,8 @@ export function ChatBody() {
           onClick={sendMessage}
           disabled={isLoanding}
         >
-          {isLoanding === false ? "Send" : " Sending ..."}
+          {isLoanding === false ? "Send" : 
+          <span className="flex items-center gap-2 ">Sending <GoIssueReopened className="animate-spin rotate-180"/> </span>}
         </button>
       </div>
       <button
