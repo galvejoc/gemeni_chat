@@ -12,7 +12,7 @@ export function Sidebar() {
   };
 
   return (
-    <div className={`bg-slate-800 text-white ${isOpen ? 'w-36' : 'w-16'} transition-width duration-300 h-screen`}>
+    <div className={`bg-slate-800 text-white ${isOpen ? 'w-36' : 'w-16'} transition-width duration-300 min-h-screen`}>
       <button onClick={toggleSidebar} className="p-4 w-full text-white bg-cyan-600 mt-4  justify-center">
         {isOpen ? <GoMoveToStart size={24} className="ml-2"/> : <GoMoveToEnd size={24} className="ml-2"/>}
       </button>
