@@ -1,7 +1,12 @@
 import { CardInterface } from "@/interface/card.interface";
-import { GoCommentDiscussion, GoMortarBoard } from "react-icons/go";
+import { GoCommentDiscussion, GoHome, GoMortarBoard } from "react-icons/go";
 
 export const cardLinks: CardInterface[] = [
+  {
+    name: 'Home',
+    link: '',
+    icon: <GoHome size={24}/>
+  },
   {
     name: 'Chat',
     link: 'simple-chat',

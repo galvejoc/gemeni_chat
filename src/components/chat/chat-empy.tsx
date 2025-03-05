@@ -1,7 +1,7 @@
 export function ChatEmpy() {
   return (
-    <div>
+    <div className="w-full justify-center flex">
       <h1>Por favor escribe para comenzar con el dialogo</h1>
     </div>
-  )
+  );
 }
