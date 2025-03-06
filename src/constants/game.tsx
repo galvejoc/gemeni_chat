@@ -12,7 +12,7 @@ export const typeGameEs: typeGameInterface[] = [
     type: "Cultura General",
     level: [
       'Capitales del mundo, banderas, países más grandes.',
-      'Capitales del mundo, banderas, países más grandes.',
+      'Historia mundial, eventos importantes, líderes famosos.',
       'Hechos históricos poco conocidos, tratados y guerras.']
   },
   {

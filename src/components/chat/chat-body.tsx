@@ -10,8 +10,28 @@ import { Loading } from "../ui";
 import { ChatMessage } from "@/interface";
 
 export function ChatBody() {
+
+  const tempHistory : ChatMessage[]  = [
+    {
+      "type": "user",
+      "message": "hola"
+    },
+    {
+      "type": "bot",
+      "message": "¡Hola! ¿En qué puedo ayudarte hoy?\n"
+    },
+    {
+      "type": "user",
+      "message": "dime un cuento"
+    },
+    {
+      "type": "bot",
+      "message": "Claro que sí. Aquí tienes un cuento:\n\n**El Árbol que Quería Volar**\n\nHabía una vez, en un bosque lleno de árboles altos y frondosos, un pequeño árbol llamado Arce. Arce era diferente a los demás. Mientras los otros árboles se contentaban con hundir sus raíces en la tierra y estirar sus ramas hacia el sol, Arce soñaba con volar.\n\n\"¡Quiero ver el mundo desde arriba!\" decía Arce, suspirando mientras las hojas de sus ramas se agitaban con el viento.\n\nLos otros árboles se reían. \"Los árboles no vuelan, Arce\", decían. \"Tenemos raíces, no alas.\"\n\nPero Arce no se rendía. Observaba a los pájaros volar con envidia, imitando sus movimientos con sus ramas, sintiendo una punzada de anhelo en su savia.\n\nUn día, un búho sabio, que había escuchado los deseos de Arce, se posó en una de sus ramas. \"Pequeño Arce,\" dijo el búho con voz ronca, \"¿por qué deseas tanto volar?\"\n\n\"Quiero ver el mundo desde arriba, ver más allá del bosque, conocer otros lugares\", respondió Arce con tristeza.\n\nEl búho reflexionó por un momento. \"Arce,\" dijo finalmente, \"tú no tienes alas, es cierto, pero tienes algo muy especial: semillas.\"\n\nArce miró sus pequeñas semillas, que colgaban de sus ramas como diminutas joyas.\n\n\"Tus semillas,\" continuó el búho, \"tienen el poder de volar. El viento las llevará lejos, a tierras que nunca has visto. Cada semilla es una parte de ti, un pequeño explorador que llevará tu esencia a nuevos lugares. Y cuando esas semillas echen raíces y crezcan, una parte de ti estará allí, creciendo en ese nuevo lugar.\"\n\nArce escuchó atentamente. Nunca había pensado en sus semillas de esa manera.\n\nEsa noche, cuando el viento sopló con fuerza, Arce cerró los ojos y se imaginó a sus semillas volando, como pequeñas hadas aladas, cruzando valles y montañas. Se imaginó a sus \"hijos\" creciendo en lugares lejanos, fuertes y hermosos.\n\nY así, Arce comprendió que, aunque él no podía volar en cuerpo, podía volar en espíritu. Sus semillas eran sus alas, y el viento, su aliado. Y aunque sus raíces lo mantenían anclado a la tierra, su corazón volaba libre con cada semilla que se dispersaba.\n\nDesde ese día, Arce ya no se sintió triste. Cada vez que el viento soplaba, sonreía, sabiendo que una parte de él viajaba por el mundo, cumpliendo su sueño de volar. Y el bosque, que antes se reía de él, ahora lo admiraba por su sabiduría y su forma única de alcanzar el cielo.\n\n**Fin**\n"
+    }
+  ]
+
   const [userInput, setUserInput] = useState('');
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>(tempHistory);
   const [isLoanding, setIsLoanding] = useState<boolean>(false);
   const [chatSession, setChatSession] = useState<ChatSession | null>(null);
 
@@ -61,7 +81,7 @@ export function ChatBody() {
   return (
     <div className=" container mx-auto px-4">
       <h1 className=" text-3xl font-bold text-center mb-2"> ChatBot</h1>
-      <div className="chat-container rounded-lg shadow-md p-4">
+      <div className="chat-container rounded-lg border-cyan-600 border-4 p-4">
         {chatHistory.length === 0 && !isLoanding ?
           <ChatEmpy /> :
           <ChatHistory chatHistory={chatHistory} />
@@ -71,13 +91,13 @@ export function ChatBody() {
       <div className="flex mt-4">
         <input
           type="text"
-          className="flex-grow px-4 py-2 rounded-lg border border-gray-300 "
+          className="flex-grow px-4 py-2 rounded-lg border-2 border-cyan-600 focus:border-cyan-700"
           placeholder="type your message"
           value={userInput}
           onChange={handleUserInput}
         />
         <button
-          className="px-4 py-2 ml-2 rounded-lg bg-blue-500 text-white cursor-pointer hover:bg-blue-600 transition duration-300"
+          className="md:px-10 px-4 py-2 text-lg ml-2 rounded-lg bg-cyan-600 cursor-pointer hover:bg-cyan-700 transition duration-300"
           onClick={sendMessage}
           disabled={isLoanding}
         >
@@ -86,7 +106,7 @@ export function ChatBody() {
         </button>
       </div>
       <button
-        className="mt-4 block px-4 py2 rounded-lg py-2 bg-gray-400 text-white cursor-pointer hover:bg-gray-500 transition duration-300"
+        className="mt-4 block px-4 text-lg py2 rounded-lg py-2 bg-gray-400 text-white cursor-pointer hover:bg-gray-500 transition duration-300"
         onClick={clearChat}
       >
         Clear Chat
